@@ -42,6 +42,14 @@ class Menu extends Component {
                 {dish.comments.map((comments) => (
                   <div key={comments.id}>
                     <div>{comments.comment}</div>
+                    <p>
+                      --{comments.author},
+                      {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                      }).format(new Date(Date.parse(comments.date)))}
+                    </p>
                   </div>
                 ))}
               </CardBody>
