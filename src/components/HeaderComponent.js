@@ -11,7 +11,7 @@ import { Jumbotron as Jumbo } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 function Header() {
-  const [navOpen, setNavOpen] = useState(false);
+  const [ navOpen, setNavOpen ] = useState(false);
   const toggleNav = (event) => {
     setNavOpen((isNavOpen) => !isNavOpen);
   };
@@ -22,7 +22,7 @@ function Header() {
         <div className="container">
           <NavbarToggler onClick={toggleNav} />
           <Collapse navbar>
-            <NavbarBrand className="mr-auto" href="/">
+            <NavbarBrand className="mr-auto" href="/home">
               <img
                 src="assets/images/logo.png"
                 height="30"
@@ -32,7 +32,7 @@ function Header() {
             </NavbarBrand>
             <Nav navbar>
               <NavItem>
-                <NavLink className="nav-link" to="/home">
+                <NavLink className="nav-link" to="/">
                   <span className="fa fa-home fa-lg"></span> Home
                 </NavLink>
               </NavItem>
