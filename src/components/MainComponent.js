@@ -8,18 +8,27 @@ import { DISHES } from "../shared/Dishes";
 import { COMMENTS } from "../shared/Comments";
 import { LEADERS } from "../shared/Leaders";
 import { PROMOTIONS } from "../shared/Promotions";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import DishDetail from "./DishDetailCompoent";
 
+const mapStateToProps = state => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leaders: state.leaders
+  }
+}
+// this.state = {
+//   dishes: DISHES,
+//   comments: COMMENTS,
+//   promotions: PROMOTIONS,
+//   leaders: LEADERS,
+// };
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dishes: DISHES,
-      comments: COMMENTS,
-      promotions: PROMOTIONS,
-      leaders: LEADERS,
-    };
   }
 
   render() {
@@ -31,12 +40,12 @@ class Main extends Component {
             path="/home"
             element={
               <Home
-                dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+                dish={this.props.dishes.filter((dish) => dish.featured)[0]}
                 promotion={
-                  this.state.promotions.filter((promo) => promo.featured)[0]
+                  this.props.promotions.filter((promo) => promo.featured)[0]
                 }
                 leader={
-                  this.state.leaders.filter((leader) => leader.featured)[0]
+                  this.props.leaders.filter((leader) => leader.featured)[0]
                 }
               />
             }
@@ -45,7 +54,7 @@ class Main extends Component {
           <Route
             exact
             path="/menu"
-            element={<Menu dishes={this.state.dishes} />}
+            element={<Menu dishes={this.props.dishes} />}
           />
           <Route exact path="/contactus" element={<Contact />} />
           <Route exact path="/details/:id" element={<DishDetail />} />
@@ -56,4 +65,4 @@ class Main extends Component {
     );
   }
 }
-export default Main;
+export default (connect(mapStateToProps)(Main));
