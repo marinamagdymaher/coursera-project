@@ -8,7 +8,7 @@ import { DISHES } from "../shared/Dishes";
 import { COMMENTS } from "../shared/Comments";
 import { LEADERS } from "../shared/Leaders";
 import { PROMOTIONS } from "../shared/Promotions";
-import { Routes, Route, withRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import DishDetail from "./DishDetailCompoent";
 
